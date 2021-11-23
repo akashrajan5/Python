@@ -11,7 +11,7 @@ try:
         print('Please provide three numbers')
     else:
         if(b > c and b > d):
-            print(f'{b} is the highest')
+            print(f'{b} is the Lowest')
         elif(c > d and c > b):
             print(f'{c} is the highest')
         else:
