@@ -18,3 +18,15 @@ try:
             print(f'{d} is the highest')
 except ValueError:
     print('Please provide integers')
+
+#function to reverse a string
+
+def strRevUsingSlice(e):
+    print(e[::-1])
+
+
+def revUsingLoop(e):
+    s = ""
+    for i in e:
+        s = i + s
+    print(s)
