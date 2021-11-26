@@ -50,6 +50,7 @@ def api_id():
 
     return jsonify(results)
 
+#Adding two numbers
 @app.route('/adder', methods=['POST'])
 def adder():
     result = {}
@@ -68,6 +69,7 @@ def adder():
         res = json.dumps(result)
         return str(res)
 
+#Reversing string
 @app.route('/string-reverse', methods=['POST'])
 def reverse():
     result = {}
@@ -83,6 +85,7 @@ def reverse():
         result['errMsg'] = str(e)
         res = json.dumps(result)
         return str(res)
+
 
 
 
