@@ -68,4 +68,22 @@ def adder():
         res = json.dumps(result)
         return str(res)
 
+@app.route('/string-reverse', methods=['POST'])
+def reverse():
+    result = {}
+    try:
+        string = str(request.form['str'])
+        result['status'] = 1
+        result['reversedStr'] = string[::-1]
+        res = json.dumps(result)
+        return str(res)
+    except Exception as e:
+        print(traceback.format_exc())
+        result['status'] = -99
+        result['errMsg'] = str(e)
+        res = json.dumps(result)
+        return str(res)
+
+
+
 app.run()
