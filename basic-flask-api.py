@@ -1,4 +1,6 @@
 import flask
+import json
+import traceback
 from flask import request, jsonify
 
 app = flask.Flask(__name__)
@@ -26,7 +28,6 @@ books = [
 def home():
     return '''<h1>Hello World</h1>'''
 
-
 @app.route('/books/all', methods=['GET'])
 def api_all():
     return jsonify(books)
@@ -48,5 +49,23 @@ def api_id():
         results = "No books found"
 
     return jsonify(results)
+
+@app.route('/adder', methods=['POST'])
+def adder():
+    result = {}
+    try:
+        n1 = int(request.form['num_1'])
+        n2 = int(request.form['num_2'])
+        result['status'] = 1
+        result['total'] = n1 + n2
+        res = json.dumps(result)
+        return res
+    except Exception as e :
+        print(traceback.format_exc())
+        result['status'] = -99
+        result['errorName'] = type(e).__name__
+        result['errMsg'] = str(e)
+        res = json.dumps(result)
+        return str(res)
 
 app.run()
