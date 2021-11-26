@@ -86,7 +86,29 @@ def reverse():
         res = json.dumps(result)
         return str(res)
 
-
-
+#Bubble sort
+@app.route('/bubble-sort', methods=['POST'])
+def bubbleSort():
+    result = {}
+    try:
+        list = str(request.form['str'])
+        result['status'] = 1
+        arr = []
+        for x in list.split(','):
+            arr.append(int(x))
+        l = len(arr)
+        for i in range(l-1):
+            for j in range(l-i-1):
+                if(arr[j] > arr[j+1]):
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
+        result['sorted'] = arr
+        res = json.dumps(result)
+        return res
+    except Exception as e:
+        print(traceback.format_exc())
+        result['status'] = -99
+        result['errMsg'] = str(e)
+        res = json.dumps(result)
+        return str(res)
 
 app.run()
