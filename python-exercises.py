@@ -34,7 +34,7 @@ def revUsingLoop(e):
     print(s)
 
 
-#Scrapping
+#Scraping
 import requests
 from bs4 import BeautifulSoup
 
