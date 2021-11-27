@@ -32,3 +32,17 @@ def revUsingLoop(e):
     for i in e:
         s = i + s
     print(s)
+
+
+#Scrapping
+import requests
+from bs4 import BeautifulSoup
+
+#txt = open("scraping.txt", "w")
+url = 'https://flea.today/store/?offset=96'
+page = requests.get(url)
+soup = BeautifulSoup(page.content, "html.parser")
+main = soup.find(class_="main-product")
+img = main.find_all('img', class_="fami-img")
+for i in img:
+    print(i['data-src'])
