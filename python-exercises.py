@@ -43,6 +43,12 @@ def fizz():
             continue
         print(i)
 
+# Heads or Tails
+import random
+def headsTails(n):
+    for i in range(1,n + 1):
+        print(random.randint(0, 1))
+
 #Scraping
 import requests
 from bs4 import BeautifulSoup
