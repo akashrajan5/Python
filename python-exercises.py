@@ -39,7 +39,7 @@ import requests
 from bs4 import BeautifulSoup
 
 #txt = open("scraping.txt", "w")
-url = 'https://flea.today/store/?offset=96'
+url = 'https://flea.today/store/'
 page = requests.get(url)
 soup = BeautifulSoup(page.content, "html.parser")
 main = soup.find(class_="main-product")
