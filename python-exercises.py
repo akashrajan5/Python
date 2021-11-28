@@ -47,7 +47,10 @@ def fizz():
 import random
 def headsTails(n):
     for i in range(1,n + 1):
-        print(random.randint(0, 1))
+        if(random.randint(0, 1)):
+            print("Heads")
+        else:
+            print("Tails")
 
 #Scraping
 import requests
