@@ -82,7 +82,7 @@ def reverse():
     except Exception as e:
         print(traceback.format_exc())
         result['status'] = -99
-        result['errMsg'] = str(e)
+        result['errMsg'] = str(e).__name__
         res = json.dumps(result)
         return str(res)
 
@@ -107,7 +107,7 @@ def bubbleSort():
     except Exception as e:
         print(traceback.format_exc())
         result['status'] = -99
-        result['errMsg'] = str(e)
+        result['errMsg'] = str(e).__name__
         res = json.dumps(result)
         return str(res)
 
