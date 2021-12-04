@@ -2,7 +2,6 @@ import json
 from woocommerce import API
 import requests
 
-
 def woo_details():
     wcapi = API(
                 url="store-url",
