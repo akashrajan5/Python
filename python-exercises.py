@@ -52,6 +52,14 @@ def headsTails(n):
         else:
             print("Tails")
 
+#class Examples
+class Car:
+    def __init__(self, name, model):
+        self.name = name
+        self.model = model
+    def fullname(self):
+        return '{} and model is {}'.format(self.name, self.model)
+
 #Scraping
 import requests
 from bs4 import BeautifulSoup
@@ -64,3 +72,8 @@ main = soup.find(class_="main-product")
 img = main.find_all('img', class_="fami-img")
 for i in img:
     print(i['data-src'])
+
+
+if __name__ == __main__:
+    car1 = Car("Lamborgini", "Gallardo")
+    print(car1.fullname())
