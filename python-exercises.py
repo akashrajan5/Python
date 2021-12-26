@@ -63,9 +63,8 @@ class Car:
 #Scraping
 import requests
 from bs4 import BeautifulSoup
-
 #txt = open("scraping.txt", "w")
-url = 'https://flea.today/store/'
+#url = 'https://flea.today/store/'
 page = requests.get(url)
 soup = BeautifulSoup(page.content, "html.parser")
 main = soup.find(class_="main-product")
@@ -74,6 +73,7 @@ for i in img:
     print(i['data-src'])
 
 
-if __name__ == __main__:
+
+if __name__ == "__main__":
     car1 = Car("Lamborgini", "Gallardo")
     print(car1.fullname())
