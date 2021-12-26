@@ -135,7 +135,7 @@ def create_pickup_address(data):
         door_no = "-"
         pickup_location = response["address"]["pickup_code"]
         ecom_db = dbutil.get_ecom_db()
-        create = dbutil.insert_query(ecom_db, "insert into warehouse (name, address_1, address_2, phone_no, email, door_no, pid, pickup_location) values (%s, %s, %s, %s, %s, %s, %s, %s)", [[name, address_1, address_2, phone, email, door_no, pid, pickup_location]])
+        create = dbutil.insert_query(ecom_db, "insert into table_name (name, address_1, address_2, phone_no, email, door_no, pid, pickup_location) values (%s, %s, %s, %s, %s, %s, %s, %s)", [[name, address_1, address_2, phone, email, door_no, pid, pickup_location]])
         return response.get("success") , response["address"]["pickup_code"]
     else:
         return response["message"], response["errors"]
@@ -170,7 +170,7 @@ def get_all_orders():
 def create_ship_generate_shiprocket_order(data, woo_url, orderid):
 
     ecom_db = dbutil.get_ecom_db()
-    result = dbutil.select_query(ecom_db, "SELECT * FROM `all_woo_lines` WHERE `store_url` LIKE %s AND `orderid` = %s", [woo_url, orderid])
+    result = dbutil.select_query(ecom_db, "SELECT * FROM table_name WHERE `store_url` LIKE %s AND `orderid` = %s", [woo_url, orderid])
     prod = []
     for i in range(len(result)):
         prod.append({
@@ -244,7 +244,7 @@ def create_ship_generate_shiprocket_order(data, woo_url, orderid):
         pickup_token_number = response["payload"]["pickup_token_number"]
         row_data = [pickup_location, sr_order_id, order_id, order_date, billing_customer_name, billing_last_name, billing_address, billing_city, billing_pincode, billing_state, billing_country, billing_email, billing_phone, shipping_is_billing, shipping_charges, payment_method, discount, sub_total, length, breadth, height, weight, json.dumps(order_items), label_url, manifest_url, routing_code, pickup_token_number, shiprocket_json, json.dumps(response)]
         training_db = dbutil.get_training_db()
-        dbutil.insert_query(training_db, "insert into shiprocket_order_details (pickup_location, shiprocket_order_id, order_id, order_date, billing_name, billing_last_name, billing_address, billing_city, billing_pincode, billing_state, billing_country, billing_email, billing_phone, shipping_is_billing,  shipping_charges, payment_method, discount, subtotal, length, breadth, height, weight, order_items, label_url, manifest_url, routing_code, pickup_token_number, to_shiprocket_json, from_shiprocket_json) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", [row_data])
+        dbutil.insert_query(training_db, "insert into table_name (pickup_location, shiprocket_order_id, order_id, order_date, billing_name, billing_last_name, billing_address, billing_city, billing_pincode, billing_state, billing_country, billing_email, billing_phone, shipping_is_billing,  shipping_charges, payment_method, discount, subtotal, length, breadth, height, weight, order_items, label_url, manifest_url, routing_code, pickup_token_number, to_shiprocket_json, from_shiprocket_json) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", [row_data])
         print(response)
 
     return label_url, manifest_url, pickup_token_number
