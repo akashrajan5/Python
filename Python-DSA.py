@@ -62,12 +62,19 @@ def fibonacci(n):
             a, b = b, c
         return b
 
+#Search for an element
+def search(array, value):
+    if value in array:
+        return "Value Exists"
+    else:
+        return "Value doesn't exist"
+
 #Linear search
 def linear_search(array, value):
-    for i in array:
-        if value == i:
-            return "Found"
-    return "No Value Found"
+    for i in range(len(array)):
+        if array[i] == value:
+            return i
+    return "Value doesn't exist"
 
 #Binary search -> Iterative
 def binary_search(array, value):
@@ -84,4 +91,4 @@ def binary_search(array, value):
 
 
 if __name__ == "__main__":
-    print(binary_search([1,3,4,6,8,9,10,18], 9))
+    print(search([1,3,4,6,8,9,10,18], 14))
