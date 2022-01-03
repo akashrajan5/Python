@@ -67,22 +67,21 @@ def linear_search(array, value):
     for i in array:
         if value == i:
             return "Found"
-    return "Not found"
+    return "No Value Found"
 
-
-#Scraping
-def scraping(url):
-    #url = 'https://flea.today/store/'
-    import requests
-    from bs4 import BeautifulSoup
-    txt = open("scraping.txt", "w")
-    page = requests.get(url)
-    soup = BeautifulSoup(page.content, "html.parser")
-    main = soup.find(class_="main-product")
-    img = main.find_all('img', class_="fami-img")
-    for i in img:
-        print(i['data-src'])
+#Binary search -> Iterative
+def binary_search(array, value):
+    low, mid, high = 0, 0, len(array) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if array[mid] < value:
+            low = mid + 1
+        elif array[mid] > value:
+            high = mid - 1
+        else:
+            return mid
+    return "No Value Found"
 
 
 if __name__ == "__main__":
-    print(linear_search([1,4,6,8,3,2,0,8], 99))
+    print(binary_search([1,3,4,6,8,9,10,18], 9))
