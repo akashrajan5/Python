@@ -1,3 +1,11 @@
+#class Examples
+class Car:
+    def __init__(self, name, model):
+        self.name = name
+        self.model = model
+    def fullname(self):
+        return '{} and model is {}'.format(self.name, self.model)
+
 #Finding the highest of three numbers
 def highest_of_three(a, b, c):
     if a > b and a > c:
@@ -41,14 +49,6 @@ def heads_tails(n):
         else:
             print("Tails")
 
-#class Examples
-class Car:
-    def __init__(self, name, model):
-        self.name = name
-        self.model = model
-    def fullname(self):
-        return '{} and model is {}'.format(self.name, self.model)
-
 #Fibonacci
 def fibonacci(n):
     a, b = 0, 1
@@ -61,6 +61,14 @@ def fibonacci(n):
             c = a + b
             a, b = b, c
         return b
+
+#Linear search
+def linear_search(array, value):
+    for i in array:
+        if value == i:
+            return "Found"
+    return "Not found"
+
 
 #Scraping
 def scraping(url):
@@ -77,4 +85,4 @@ def scraping(url):
 
 
 if __name__ == "__main__":
-    print(headsTails(5))
+    print(linear_search([1,4,6,8,3,2,0,8], 99))
