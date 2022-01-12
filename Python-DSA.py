@@ -89,6 +89,9 @@ def binary_search(array, value):
             return mid
     return "No Value Found"
 
+#most occuring in a list
+def most_occured(array):
+    return max(set(array), key = array.count)
 
 if __name__ == "__main__":
-    print(search([1,3,4,6,8,9,10,18], 14))
+    print(most_occured([3, 3,4,6,8,9,10,18]))
