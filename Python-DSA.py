@@ -1,11 +1,3 @@
-#class Examples
-class Car:
-    def __init__(self, name, model):
-        self.name = name
-        self.model = model
-    def fullname(self):
-        return '{} and model is {}'.format(self.name, self.model)
-
 #Finding the highest of three numbers
 def highest_of_three(a, b, c):
     if a > b and a > c:
