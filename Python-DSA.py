@@ -38,28 +38,27 @@ def heads_tails(n):
     for i in range(n):
         if(random.randint(0, 1)):
             print("Heads")
-        else:
-            print("Tails")
+        print("Tails")
 
 #Fibonacci
 def fibonacci(n):
     a, b = 0, 1
     if n <= a:
-        return 0
+        result = 0
     elif n == b:
-        return 1
+        result = 1
     else:
         for i in range(2, n):
             c = a + b
             a, b = b, c
-        return b
+        result = b
+    return result
 
 #Search for an element
 def search(array, value):
     if value in array:
         return "Value Exists"
-    else:
-        return "Value doesn't exist"
+    return "Value doesn't exist"
 
 #Linear search
 def linear_search(array, value):
@@ -85,5 +84,33 @@ def binary_search(array, value):
 def most_occured(array):
     return max(set(array), key = array.count)
 
+#Stack, Queue implementation using list
+class StackandQueue:
+    def __init__(self):
+        self.list = list()
+    def add(self, value):
+        if value not in self.list:
+            self.list.append(value)
+            return f"Updated list is : {self.list}"
+        return f"Element {value} is already present"
+    def lifo(self):
+        if len(self.list) > 0:
+            self.list.pop()
+            return f"Updated List is : {self.list}"
+        return f"List is empty"
+    def fifo(self):
+        if len(self.list) > 0:
+            self.list.pop(0)
+            return f"Updated list is : {self.list}"
+        return f"List is empty"
+
+
+
 if __name__ == "__main__":
-    print(most_occured([3, 3,4,6,8,9,10,18]))
+    """e = StackandQueue()
+    e.add(1)
+    e.add(2)
+    e.add(3)
+    print(e.add(4))
+    print(e.lifo())
+    print(e.fifo())"""
