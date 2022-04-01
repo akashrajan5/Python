@@ -104,13 +104,28 @@ class StackandQueue:
             return f"Updated list is : {self.list}"
         return f"List is empty"
 
+# Hackerrank List challenge
+N = int(input())
+arr = list()
+arr2 = list()
+for i in range(0, N):
+    inp = input().split(" ")
+    if inp[0] == "insert":
+        arr.insert(int(inp[1]), int(inp[2]))
+    if inp[0] == "append":
+        arr.append(int(inp[1]))
+    if inp[0] == "remove":
+        arr.remove(int(inp[1]))
+    if inp[0] == "sort":
+        arr.sort()
+    if inp[0] == "pop":
+        arr.pop()
+    if inp[0] == "reverse":
+        arr.reverse()
+    if inp[0] == "print":
+        arr2 = arr.copy()
+        print(arr2)
+        arr2.clear()
 
 
 if __name__ == "__main__":
-    """e = StackandQueue()
-    e.add(1)
-    e.add(2)
-    e.add(3)
-    print(e.add(4))
-    print(e.lifo())
-    print(e.fifo())"""
