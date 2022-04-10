@@ -140,11 +140,15 @@ def selection_sort(arr):
 # Bubble sort
 def bubble_sort(arr):
     for i in range(len(arr)):
+        swap = False
         for j in range(len(arr)-i-1):
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] =  arr[j+1], arr[j]
+                swap = True
+        if not swap:
+            break
     return arr
 
 if __name__ == "__main__":
-    li = [1,3,2,5,9,1,2,4.5,-99,8,7,4]
+    li = [1,2,3,4,-5,6,7,8,-99,-4,-1,3,4,5,6]
     print(bubble_sort(li))
