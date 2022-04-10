@@ -105,27 +105,28 @@ class StackandQueue:
         return f"List is empty"
 
 # Hackerrank List challenge
-"""N = input()
-arr = list()
-arr2 = list()
-for i in range(0, int(N)):
-    inp = input().split(" ")
-    if inp[0] == "insert":
-        arr.insert(int(inp[1]), int(inp[2]))
-    if inp[0] == "append":
-        arr.append(int(inp[1]))
-    if inp[0] == "remove":
-        arr.remove(int(inp[1]))
-    if inp[0] == "sort":
-        arr.sort()
-    if inp[0] == "pop":
-        arr.pop()
-    if inp[0] == "reverse":
-        arr.reverse()
-    if inp[0] == "print":
-        arr2 = arr.copy()
-        print(arr2)
-        arr2.clear()"""
+# 1st input is int and 2nd inpu is str ,input should be spaced
+def list_challange(N=input()):
+    arr = list()
+    arr2 = list()
+    for i in range(0, int(N)):
+        inp = input().split(" ")
+        if inp[0] == "insert":
+            arr.insert(int(inp[1]), int(inp[2]))
+        if inp[0] == "append":
+            arr.append(int(inp[1]))
+        if inp[0] == "remove":
+            arr.remove(int(inp[1]))
+        if inp[0] == "sort":
+            arr.sort()
+        if inp[0] == "pop":
+            arr.pop()
+        if inp[0] == "reverse":
+            arr.reverse()
+        if inp[0] == "print":
+            arr2 = arr.copy()
+            print(arr2)
+            arr2.clear()    
 
 # Selection sort
 def selection_sort(arr):
@@ -136,6 +137,14 @@ def selection_sort(arr):
         arr[i], arr[low] = arr[low], arr[i]
     return arr
 
+# Bubble sort
+def bubble_sort(arr):
+    for i in range(len(arr)):
+        for j in range(len(arr)-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] =  arr[j+1], arr[j]
+    return arr
+
 if __name__ == "__main__":
-    li = [1,-99,3,5,9,6,7,4,1,2,3,4,5]
-    print(selection_sort(li))
+    li = [1,3,2,5,9,1,2,4.5,-99,8,7,4]
+    print(bubble_sort(li))
