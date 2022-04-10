@@ -105,10 +105,10 @@ class StackandQueue:
         return f"List is empty"
 
 # Hackerrank List challenge
-N = int(input())
+"""N = input()
 arr = list()
 arr2 = list()
-for i in range(0, N):
+for i in range(0, int(N)):
     inp = input().split(" ")
     if inp[0] == "insert":
         arr.insert(int(inp[1]), int(inp[2]))
@@ -125,7 +125,17 @@ for i in range(0, N):
     if inp[0] == "print":
         arr2 = arr.copy()
         print(arr2)
-        arr2.clear()
+        arr2.clear()"""
 
+# Selection sort
+def selection_sort(arr):
+    for i in range(len(arr)):
+        low = i
+        for j in range(i+1, len(arr)):
+            low = j if arr[j] < arr[low] else low
+        arr[i], arr[low] = arr[low], arr[i]
+    return arr
 
 if __name__ == "__main__":
+    li = [1,-99,3,5,9,6,7,4,1,2,3,4,5]
+    print(selection_sort(li))
