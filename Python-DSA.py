@@ -97,36 +97,12 @@ class StackandQueue:
         if len(self.list) > 0:
             self.list.pop()
             return f"Updated List is : {self.list}"
-        return f"List is empty"
+        return "List is empty"
     def fifo(self):
         if len(self.list) > 0:
             self.list.pop(0)
             return f"Updated list is : {self.list}"
-        return f"List is empty"
-
-# Hackerrank List challenge
-# 1st input is int and 2nd inpu is str ,input should be spaced
-def list_challange(N=input()):
-    arr = list()
-    arr2 = list()
-    for i in range(0, int(N)):
-        inp = input().split(" ")
-        if inp[0] == "insert":
-            arr.insert(int(inp[1]), int(inp[2]))
-        if inp[0] == "append":
-            arr.append(int(inp[1]))
-        if inp[0] == "remove":
-            arr.remove(int(inp[1]))
-        if inp[0] == "sort":
-            arr.sort()
-        if inp[0] == "pop":
-            arr.pop()
-        if inp[0] == "reverse":
-            arr.reverse()
-        if inp[0] == "print":
-            arr2 = arr.copy()
-            print(arr2)
-            arr2.clear()    
+        return "List is empty"
 
 # Selection sort
 def selection_sort(arr):
@@ -149,6 +125,17 @@ def bubble_sort(arr):
             break
     return arr
 
+# Insertion sort
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j+1] = arr[j]
+            j -= 1
+        arr[j+1] = key
+    return arr
+
 if __name__ == "__main__":
-    li = [1,2,3,4,-5,6,7,8,-99,-4,-1,3,4,5,6]
-    print(bubble_sort(li))
+    li = [1,2,3,4,-5,6,7,8,-99,-4,4.4,-1]
+    print(insertion_sort(li))
