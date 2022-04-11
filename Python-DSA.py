@@ -1,4 +1,4 @@
-#Finding the highest of three numbers
+# Finding the highest of three numbers
 def highest_of_three(a, b, c):
     if a > b and a > c:
         result = f'{a} is greater'
@@ -8,7 +8,7 @@ def highest_of_three(a, b, c):
         result = f'{c} is greater'
     return result
 
-#function to reverse a string
+# Function to reverse a string
 def strRevUsingSlice(e):
     print(e[::-1])
 
@@ -18,7 +18,7 @@ def revUsingLoop(e):
         s = i + s
     print(s)
 
-#FizzBuzz program
+# FizzBuzz program
 def fizz_buzz():
     for i in range(100):
         if i % 3 == 0 and i % 5 == 0:
@@ -40,7 +40,7 @@ def heads_tails(n):
             print("Heads")
         print("Tails")
 
-#Fibonacci
+# Fibonacci
 def fibonacci(n):
     a, b = 0, 1
     if n <= a:
@@ -54,20 +54,20 @@ def fibonacci(n):
         result = b
     return result
 
-#Search for an element
+# Search for an element
 def search(array, value):
     if value in array:
         return "Value Exists"
     return "Value doesn't exist"
 
-#Linear search
+# Linear search
 def linear_search(array, value):
     for i in range(len(array)):
         if array[i] == value:
             return i
     return "Value doesn't exist"
 
-#Binary search -> Iterative
+# Binary search -> Iterative
 def binary_search(array, value):
     low, mid, high = 0, 0, len(array) - 1
     while low <= high:
@@ -80,11 +80,11 @@ def binary_search(array, value):
             return mid
     return "No Value Found"
 
-#most occuring in a list
+# most occuring in a list
 def most_occured(array):
     return max(set(array), key = array.count)
 
-#Stack, Queue implementation using list
+# Stack, Queue implementation using list
 class StackandQueue:
     def __init__(self):
         self.list = list()
