@@ -119,7 +119,11 @@ def remove_product(prod_id):
 def create_category(data):
     if not data.get("name"):
         return "Name is mandatory, please provide a name."
+    attributes = ["slug", "description"]
     category = {"name": str(data.get("name").capitalize()), "image": {"src": str(data.setdefault("image", "A default url has to be set"))}}
+    for key, value in data.items():
+        if key.lower() in attributes.lower():
+            category.update({str(key.lower()): str(value)})
     response = woo_details().post("products/categories", category).json()
     return response["id"]
 
