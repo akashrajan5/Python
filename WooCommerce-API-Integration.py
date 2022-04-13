@@ -32,18 +32,71 @@ def product_details(prod_id):
 
 def create_product(data):
     if data is None:
-        print("Products data is empty.")
-    else :
-        pdata = {}
-        pdata["name"] = data["name"]
+        return
 
-        cat_id_1 = get_category_id(pdata["Category1"])
+    # codes to be added
 
-        res = woo_details().post("products", data).json()
-        if 'code' in res:
-            print("Error, Details : ", res)
-        else:
-            print("Product successfully created")
+    create_prod = {
+        "name": "Premium Quality",
+        "type": "simple",
+        "sku": "",
+        "price": "",
+        "regular_price": "",
+        "sale_price": "",
+        "stock_status": "instock",
+        "stock_quantity": 10,
+        "description": "Pellentesque habitant",
+        "short_description": "Pellentesque habitant.",
+        "categories": [{"id": 9},{"id": 14}],
+        "images": [{"src": "http://demo.woothemes.com/woocommerce/wp-content/uploads/sites/56/2013/06/T_2_front.jpg"},
+            {"src": "http://demo.woothemes.com/woocommerce/wp-content/uploads/sites/56/2013/06/T_2_back.jpg"}],
+        "status":"publish", # draft, pending, private
+        "weight": "",
+        "dimensions": {"length": "", "width": "", "height": ""},
+        "attributes": [
+            {
+                "id": 6,
+                "name": "Color",
+                "position": 0,
+                "visible": false,
+                "variation": true,
+                "options": ["Black","Green"]
+            },
+            {
+                "id": 0,
+                "name": "Size",
+                "position": 0,
+                "visible": true,
+                "variation": true,
+                "options": ["S","M","L"]
+            }
+        ],
+        "default_attributes": [
+            {
+                "id": 6,
+                "name": "Color",
+                "option": "black"
+            },
+            {
+                "id": 0,
+                "name": "Size",
+                "option": "S"
+            }
+        ],
+        "featured": False
+    }
+
+
+    # pdata = {}
+    # pdata["name"] = data["name"]
+
+    # cat_id_1 = get_category_id(pdata["Category1"])
+
+    # res = woo_details().post("products", data).json()
+    # if 'code' in res:
+    #     print("Error, Details : ", res)
+    # else:
+    #     print("Product successfully created")
 
 def update_product(prod_id, data):
     if isinstance(prod_id, int):
@@ -63,62 +116,45 @@ def remove_product(prod_id):
         else:
             print("Successfully Removed")
 
+def create_category(data):
+    if not data.get("name"):
+        return "Name is mandatory, please provide a name."
+    category = {"name": str(data.get("name").capitalize()), "image": {"src": str(data.setdefault("image", "A default url has to be set"))}}
+    response = woo_details().post("products/categories", category).json()
+    return response["id"]
+
 def get_all_categories_data():
-    all_category = []
-    page = 1
+    all_category, page = list(), 1
     while True:
         all_cat = woo_details().get(f"products/categories?per_page=50&page={page}").json()
         if len(all_cat) == 0:
             break
         for cat in all_cat:
             all_category.append(cat)
-        page = page + 1
+        page =+ 1
     return all_category
 
 def get_all_categories_name():
-    all_category = []
-    page = 1
+    all_categories, page = list(), 1
     while True:
-        all_cat = woo_details().get(f"products/categories?per_page=50&page={page}").json()
-        if len(all_cat) == 0:
+        all_category = woo_details().get(f"products/categories?per_page=50&page={page}").json()
+        if len(all_category) == 0:
             break
-        for cat in all_cat:
-            all_category.append(cat['name'].lower())
-        page = page + 1
-    for x in all_category:
-        print(x)
+        for cat in all_category:
+            all_categories.append(cat['name'])
+        page += 1
+    return all_categories
 
-def get_category_id(name):
+def get_category_id(category_name):
     category_array = get_all_categories_data()
     for cat in category_array:
-        if name.lower() == cat['name'].lower():
-            print(cat['id'])
-            return
+        if str(category_name.capitalize()) == str(cat['name']):
+            return cat['id']
     else:
-        data = {
-            "name": str(name),
-            "image": {
-                "src": ""
-            }
-        }
-        res = woo_details().post("products/categories", data).json()
-        print(res)
-        print('Successful : Category created')
-
-def create_category(cat_name, img_link):
-    data = {
-        "name": str(cat_name),
-        "image": {
-            "src": img_link
-        }
-    }
-    cat = woo_details().post("products/categories", data).json()
-    print(cat)
+        return create_category({"name": str(category_name.capitalize())})
 
 def update_category(cat_id,name):
-    data = {
-        "name" : name.lower(),
-    }
+    data = {"name" : name.lower(), "image": "-----", "description": "hello"}
     updated = woo_details().put("products/categories/%d" % (cat_id), data).json()
     print(updated)
     print('Successfully Updated')
