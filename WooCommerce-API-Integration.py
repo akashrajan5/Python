@@ -125,7 +125,7 @@ def create_category(data):
         if key.lower() in attributes.lower():
             category.update({str(key.lower()): str(value)})
     response = woo_details().post("products/categories", category).json()
-    return response["id"]
+    return response.get("id")
 
 def get_all_categories_data():
     all_category, page = list(), 1
