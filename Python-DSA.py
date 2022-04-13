@@ -80,7 +80,7 @@ def binary_search(array, value):
             return mid
     return "No Value Found"
 
-# most occuring in a list
+# Most occuring in a list
 def most_occured(array):
     return max(set(array), key = array.count)
 
