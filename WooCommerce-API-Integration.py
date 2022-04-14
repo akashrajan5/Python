@@ -35,7 +35,6 @@ def create_product(data):
         return
 
     # codes to be added
-
     create_prod = {
         "name": str(data.get("name")),
         "type": "simple",
