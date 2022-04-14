@@ -49,7 +49,7 @@ def create_product(data):
         "short_description": str(data.get("short_description")),
         "categories": [{"id": 9},{"id": 14}],
         "images": [{"src": str(img)} for img in img_link],
-        "status":"publish", # draft, pending, private
+        "status": "publish", # draft, pending, private
         "weight": "",
         "dimensions": {"length": "", "width": "", "height": ""},
         "attributes": [
