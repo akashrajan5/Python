@@ -1,3 +1,5 @@
+# https://woocommerce.github.io/woocommerce-rest-api-docs/?python#introduction  - WooCommerce API docs
+
 import json
 from woocommerce import API
 import requests
