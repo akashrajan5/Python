@@ -35,7 +35,6 @@ def product_details(prod_id):
 def create_product(data):
     if data is None:
         return
-
     # codes to be added
     create_prod = {
         "name": str(data.get("name")),
@@ -62,14 +61,6 @@ def create_product(data):
                 "variation": true,
                 "options": ["Black","Green"]
             },
-            {
-                "id": 0,
-                "name": "Size",
-                "position": 0,
-                "visible": true,
-                "variation": true,
-                "options": ["S","M","L"]
-            }
         ],
         "default_attributes": [
             {
@@ -77,16 +68,10 @@ def create_product(data):
                 "name": "Color",
                 "option": "black"
             },
-            {
-                "id": 0,
-                "name": "Size",
-                "option": "S"
-            }
         ],
         "featured": False
     }
-
-
+    
     # pdata = {}
     # pdata["name"] = data["name"]
 
@@ -97,6 +82,7 @@ def create_product(data):
     #     print("Error, Details : ", res)
     # else:
     #     print("Product successfully created")
+    return 0
 
 def update_product(prod_id, data):
     if isinstance(prod_id, int):
