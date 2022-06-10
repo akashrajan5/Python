@@ -69,6 +69,14 @@ def adder():
         res = json.dumps(result)
         return str(res)
 
+@app.route('/square/<int:number>', methods=["GET"])
+def variable_int(number):
+    return "Square value is " + str(number * number)
+
+@app.route('/square/<string:name>', methods=['GET'])
+def variable_string(name):
+    return "Your name is " + str(name)
+    
 #Reversing string
 @app.route('/string-reverse', methods=['POST'])
 def reverse():
@@ -86,6 +94,41 @@ def reverse():
         res = json.dumps(result)
         return str(res)
 
+@app.route('/stripe/customer', methods=['GET', 'POST', 'DELETE'])
+def stripe_customer():
+    result = dict()
+    if request.method == "GET":
+        try:
+            customer_id = request.form["customer_id"]
+            result["data"] = sunshinelib.get_customer(customer_id)
+            result["status"] = 200
+        except Exception as e:
+            result["status"] = 400
+            result['errName'] = type(e).__name__
+            result['errMsg'] = str(e)
+        return jsonify(result) 
+    elif request.method == "POST":
+        try:
+            name = request.form["name"]
+            email = request.form["email"]
+            result["data"] = sunshinelib.create_customer(name, email)
+            result["status"] = 200
+        except Exception as e:
+            result["status"] = 400
+            result['errName'] = type(e).__name__
+            result['errMsg'] = str(e)
+        return jsonify(result)
+    elif request.method == "DELETE":
+        try:
+            customer_id = request.form["customer_id"]
+            result["data"] = sunshinelib.remove_customer(customer_id)
+            result["status"] = 200
+        except Exception as e:
+            result["status"] = 400
+            result['errName'] = type(e).__name__
+            result['errMsg'] = str(e)
+        return jsonify(result)
+    
 #Bubble sort
 @app.route('/bubble-sort', methods=['POST'])
 def bubbleSort():
