@@ -154,18 +154,5 @@ def bubbleSort():
         res = json.dumps(result)
         return str(res)
 
-#Scraping
-# def scraping(url):
-#     #url = 'https://flea.today/store/'
-#     import requests
-#     from bs4 import BeautifulSoup
-#     txt = open("scraping.txt", "w")
-#     page = requests.get(url)
-#     soup = BeautifulSoup(page.content, "html.parser")
-#     main = soup.find(class_="main-product")
-#     img = main.find_all('img', class_="fami-img")
-#     for i in img:
-#         print(i['data-src'])
-
 
 app.run()
