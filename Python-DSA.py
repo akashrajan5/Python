@@ -136,6 +136,19 @@ def insertion_sort(arr):
         arr[j+1] = key
     return arr
 
+# Single Linked list
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def PrintList(self):
+        temp = self.head
+        while temp:
+            print(str(self.data) + " " , end="")
+
 if __name__ == "__main__":
-    li = [1,2,3,4,-5,6,7,8,-99,-4,4.4,-1]
-    print(insertion_sort(li))
+    pass
