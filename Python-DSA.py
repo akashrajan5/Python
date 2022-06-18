@@ -12,6 +12,7 @@ def highest_of_three(a, b, c):
 def strRevUsingSlice(e):
     print(e[::-1])
 
+# Reverse a string
 def revUsingLoop(e):
     s = ""
     for i in e:
@@ -135,6 +136,14 @@ def insertion_sort(arr):
             j -= 1
         arr[j+1] = key
     return arr
+
+# diagonal difference
+def diagonalDifference(arr):
+    first = second = 0
+    for i in range(len(arr)):
+        first += arr[i][i]
+        second += arr[i][len(arr) - i - 1]
+    return abs(first - second)
 
 # Single Linked list
 class Node:
