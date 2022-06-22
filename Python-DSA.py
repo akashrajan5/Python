@@ -159,5 +159,31 @@ class LinkedList:
         while temp:
             print(str(self.data) + " " , end="")
 
+# tree data structure
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+    def insert(self, data):
+        if self.data:
+            # need to be accurate
+            if self.left is None:
+                self.left = Node(data)
+            else:
+                self.left.insert(data)
+            pass
+            
+        else:
+            self.data = data
+    
+    def printTree(self):
+        if self.left:
+            self.left.printTree()
+        print(self.data)
+        if self.right:
+            self.right.printTree()
+
 if __name__ == "__main__":
     pass
