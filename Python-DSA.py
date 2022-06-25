@@ -145,27 +145,46 @@ def diagonalDifference(arr):
         second += arr[i][len(arr) - i - 1]
     return abs(first - second)
 
-# Single Linked list
-class Node:
-    def __init__(self, data):
+# Linked list 
+class LinkedListNode:
+    def __init__(self, data = None):
         self.data = data
         self.next = None
 class LinkedList:
     def __init__(self):
         self.head = None
-
+    # insert at beginning
+    def AtBeginning(self, data = None):
+        if data is not None:
+            newNode = LinkedListNode(data)
+            newNode.next = self.head
+            self.head = newNode
+        else:
+            return "Value is none"
+    # insert at end
+    def AtEnd(self, newdata):
+        newNode = LinkedListNode(newdata)
+        if self.head is None:
+            self.head = newNode
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = newNode
+    # print linked list
     def PrintList(self):
-        temp = self.head
-        while temp:
-            print(str(self.data) + " " , end="")
-
+        dataval = self.head
+        while dataval:
+            print(dataval.data)
+            dataval = dataval.next
+        
 # tree data structure
 class Node:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
-
+    # insert into a tree
     def insert(self, data):
         if self.data:
             # need to be accurate
@@ -173,11 +192,10 @@ class Node:
                 self.left = Node(data)
             else:
                 self.left.insert(data)
-            pass
-            
+            pass #TODO
         else:
             self.data = data
-    
+    # print tree
     def printTree(self):
         if self.left:
             self.left.printTree()
@@ -185,5 +203,16 @@ class Node:
         if self.right:
             self.right.printTree()
 
+
+
 if __name__ == "__main__":
+    # Llist = LinkedList()
+    # Llist.head = LinkedListNode(3)
+    # second = LinkedListNode(5)
+    # third = LinkedListNode(1)
+    # Llist.head.next = second
+    # second.next = third
+    # Llist.AtBeginning(10)
+    # Llist.AtEnd(9)
+    # Llist.PrintList()
     pass
