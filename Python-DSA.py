@@ -1,4 +1,7 @@
 # Finding the highest of three numbers
+from distutils.errors import LinkError
+
+
 def highest_of_three(a, b, c):
     if a > b and a > c:
         result = f'{a} is greater'
@@ -171,6 +174,14 @@ class LinkedList:
         while last.next:
             last = last.next
         last.next = newNode
+    # insert inbetween
+    def InBetween(self, middlenode, newdata):
+        if middlenode is None:
+            return "Sepcify a middle node"
+        newnode = LinkedListNode(newdata)
+        newnode.next = middlenode.next
+        middlenode.next = newnode
+
     # print linked list
     def PrintList(self):
         dataval = self.head
@@ -206,13 +217,14 @@ class Node:
 
 
 if __name__ == "__main__":
-    # Llist = LinkedList()
-    # Llist.head = LinkedListNode(3)
-    # second = LinkedListNode(5)
-    # third = LinkedListNode(1)
-    # Llist.head.next = second
-    # second.next = third
-    # Llist.AtBeginning(10)
-    # Llist.AtEnd(9)
-    # Llist.PrintList()
+    Llist = LinkedList()
+    Llist.head = LinkedListNode(3)
+    second = LinkedListNode(5)
+    third = LinkedListNode(1)
+    Llist.head.next = second
+    second.next = third
+    Llist.AtBeginning(10)
+    Llist.AtEnd(9)
+    Llist.InBetween(Llist.head,8)
+    Llist.PrintList()
     pass
