@@ -1,5 +1,6 @@
 # Finding the highest of three numbers
 from distutils.errors import LinkError
+from unittest.mock import NonCallableMagicMock
 
 
 def highest_of_three(a, b, c):
@@ -181,7 +182,23 @@ class LinkedList:
         newnode = LinkedListNode(newdata)
         newnode.next = middlenode.next
         middlenode.next = newnode
-
+    # delete a node
+    def DeleteNode(self, value):
+        temp = self.head
+        if temp is not None:
+            if temp.data == value:
+                self.head = temp.next
+                temp = None
+                return
+        while temp is not None:
+            if temp.data == value:
+                break
+            prev = temp
+            temp = temp.next
+        if temp == None:
+            return
+        prev.next = temp.next
+        temp = None
     # print linked list
     def PrintList(self):
         dataval = self.head
@@ -217,14 +234,15 @@ class Node:
 
 
 if __name__ == "__main__":
-    Llist = LinkedList()
-    Llist.head = LinkedListNode(3)
-    second = LinkedListNode(5)
-    third = LinkedListNode(1)
-    Llist.head.next = second
-    second.next = third
-    Llist.AtBeginning(10)
-    Llist.AtEnd(9)
-    Llist.InBetween(Llist.head,8)
-    Llist.PrintList()
+    # Llist = LinkedList()
+    # Llist.head = LinkedListNode(3)
+    # second = LinkedListNode(5)
+    # third = LinkedListNode(1)
+    # Llist.head.next = second
+    # second.next = third
+    # Llist.AtBeginning(10)
+    # Llist.AtEnd(9)
+    # Llist.InBetween(Llist.head,8)
+    # Llist.DeleteNode(8)
+    # Llist.PrintList()
     pass
